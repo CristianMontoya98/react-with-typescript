@@ -1,13 +1,16 @@
 import type { JSX } from 'react';
-import { random } from '../utils/randomNumber';
-export const RandomFox = (): JSX.Element => {
-    const image: string = `https://randomfox.ca/images/${random()}.jpg`;
+type Props = {
+    image: string;
+    alt: string;
+};
+export const RandomFox = ({ image, alt }: Props): JSX.Element => {
     return (
         <img
             width={320}
             height='auto'
             className='rounded'
             src={image}
+            alt={alt}
         />
     );
 };

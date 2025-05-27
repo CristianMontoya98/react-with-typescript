@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { RandomFox } from '@/components/randomFox';
+import { random } from '../utils/randomNumber';
 export default function Home() {
+    const image: string = `https://randomfox.ca/images/${random()}.jpg`;
+    const alt: string = 'imagen aleatoria de zorro';
     return (
         <>
             <Head>
@@ -21,7 +24,10 @@ export default function Home() {
             <div>
                 <main>
                     <h1 className='text-4xl'>react with typescript</h1>
-                    <RandomFox />
+                    <RandomFox
+                        image={image}
+                        alt={alt}
+                    />
                 </main>
                 <footer></footer>
             </div>
