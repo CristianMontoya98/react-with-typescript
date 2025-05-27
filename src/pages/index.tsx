@@ -1,5 +1,5 @@
 import Head from 'next/head';
-
+import { RandomFox } from '@/components/randomFox';
 export default function Home() {
     return (
         <>
@@ -21,6 +21,7 @@ export default function Home() {
             <div>
                 <main>
                     <h1 className='text-4xl'>react with typescript</h1>
+                    <RandomFox />
                 </main>
                 <footer></footer>
             </div>
