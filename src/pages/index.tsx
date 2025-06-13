@@ -2,13 +2,17 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { RandomFox } from '@/components/randomFox';
 import { random } from '../utils/randomNumber';
+
+type ImageItem = { id: string; url: string };
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
 export default function Home() {
 	const alt: string = 'imagen aleatoria de zorro';
-	const [images, setImages] = useState<string[]>([
-		`https://randomfox.ca/images/${random()}.jpg`,
-		`https://randomfox.ca/images/${random()}.jpg`,
-		`https://randomfox.ca/images/${random()}.jpg`,
-		`https://randomfox.ca/images/${random()}.jpg`,
+	const [images, setImages] = useState<ImageItem[]>([
+		{ id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg` },
+		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
+		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
+		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
 	]);
 	return (
 		<>
@@ -30,13 +34,13 @@ export default function Home() {
 			<div>
 				<main>
 					<h1 className='text-4xl'>react with typescript</h1>
-					{images.map((image, index) => (
+					{images.map(({ id, url }) => (
 						<div
-							key={index}
+							key={id}
 							className='p-4'
 						>
 							<RandomFox
-								image={image}
+								image={url}
 								alt={alt}
 							/>
 						</div>
