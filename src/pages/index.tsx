@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { RandomFox } from '@/components/randomFox';
 import { random } from '../utils/randomNumber';
 
@@ -8,12 +8,16 @@ const generateId = () => Math.random().toString(36).substr(2, 9);
 
 export default function Home() {
 	const alt: string = 'imagen aleatoria de zorro';
-	const [images, setImages] = useState<ImageItem[]>([
-		{ id: generateId(), url: `https://randomfox.ca/images/${random()}.jpg` },
-		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
-		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
-		{ id: '...', url: `https://randomfox.ca/images/${random()}.jpg` },
-	]);
+	const [images, setImages] = useState<ImageItem[]>([]);
+
+	const addNewFox: MouseEventHandler<HTMLButtonElement> = (event) => {
+		event.preventDefault();
+		const newImageItem: ImageItem = {
+			id: generateId(),
+			url: `https://randomfox.ca/images/${random()}.jpg`,
+		};
+		setImages([...images, newImageItem]);
+	};
 	return (
 		<>
 			<Head>
@@ -34,6 +38,7 @@ export default function Home() {
 			<div>
 				<main>
 					<h1 className='text-4xl'>react with typescript</h1>
+					<button onClick={addNewFox}> Add new fox</button>
 					{images.map(({ id, url }) => (
 						<div
 							key={id}
