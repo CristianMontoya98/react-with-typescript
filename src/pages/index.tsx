@@ -38,7 +38,13 @@ export default function Home() {
 			<div>
 				<main>
 					<h1 className='text-4xl'>react with typescript</h1>
-					<button onClick={addNewFox}> Add new fox</button>
+					<button
+						onClick={addNewFox}
+						className='rounded bg-blue-400 p-2 ms-4'
+					>
+						{' '}
+						Add new fox
+					</button>
 					{images.map(({ id, url }) => (
 						<div
 							key={id}
