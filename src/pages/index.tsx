@@ -45,7 +45,7 @@ export default function Home() {
 						{' '}
 						Add new fox
 					</button>
-					{images.map(({ id, url }) => (
+					{images.map(({ id, url }, index) => (
 						<div
 							key={id}
 							className='p-4'
@@ -58,6 +58,13 @@ export default function Home() {
 								height='auto'
 								className='rounded bg-gray-300'
 								onClick={() => console.log('click')}
+								onLazyLoad={(img) => {
+									console.log(
+										`Imagen #${index + 1} cargada.
+									Nodo`,
+										img
+									);
+								}}
 							/>
 						</div>
 					))}
