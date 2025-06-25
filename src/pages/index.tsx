@@ -51,7 +51,7 @@ export default function Home() {
 							className='p-4'
 						>
 							<LazyImage
-								image={url}
+								src={url}
 								alt={alt}
 								title='Random fox'
 								width={320}
