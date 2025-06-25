@@ -1,10 +1,12 @@
-import type { JSX } from 'react';
+import type { ImgHTMLAttributes, JSX } from 'react';
 import { useRef, useEffect, useState } from 'react';
-type Props = {
+type LazyImageProps = {
 	image: string;
-	alt: string;
 };
-export const RandomFox = ({ image, alt }: Props): JSX.Element => {
+type ImageNative = ImgHTMLAttributes<HTMLImageElement>;
+
+type Props = LazyImageProps & ImageNative;
+export const LazyImage = ({ image, alt, ...imgProps }: Props): JSX.Element => {
 	//Al usar useRef se coloca el tipo del elemento a referenciar y se inicializa en null en caso de no saber que valor por defecto deberia tener
 	const node = useRef<HTMLImageElement>(null);
 	const [src, setSrc] = useState(
@@ -33,11 +35,8 @@ export const RandomFox = ({ image, alt }: Props): JSX.Element => {
 	return (
 		<img
 			ref={node}
-			width={320}
-			height='auto'
-			className='rounded bg-gray-300'
 			src={src}
-			alt={alt}
+			{...imgProps}
 		/>
 	);
 };
