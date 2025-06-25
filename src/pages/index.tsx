@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { MouseEventHandler, useState } from 'react';
-import { RandomFox } from '@/components/randomFox';
+import { LazyImage } from '@/components/lazyImage';
 import { random } from '../utils/randomNumber';
 
 type ImageItem = { id: string; url: string };
@@ -50,9 +50,14 @@ export default function Home() {
 							key={id}
 							className='p-4'
 						>
-							<RandomFox
+							<LazyImage
 								image={url}
 								alt={alt}
+								title='Random fox'
+								width={320}
+								height='auto'
+								className='rounded bg-gray-300'
+								onClick={() => console.log('click')}
 							/>
 						</div>
 					))}
