@@ -3,16 +3,15 @@ import { MouseEventHandler, useState } from 'react';
 import { LazyImage } from '@/components/lazyImage';
 import { random } from '../utils/randomNumber';
 
-type ImageItem = { id: string; url: string };
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
 export default function Home() {
 	const alt: string = 'imagen aleatoria de zorro';
-	const [images, setImages] = useState<ImageItem[]>([]);
+	const [images, setImages] = useState<IFoxImageItem[]>([]);
 
 	const addNewFox: MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
-		const newImageItem: ImageItem = {
+		const newImageItem: IFoxImageItem = {
 			id: generateId(),
 			url: `https://randomfox.ca/images/${random()}.jpg`,
 		};
